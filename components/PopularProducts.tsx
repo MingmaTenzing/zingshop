@@ -44,7 +44,7 @@ function PopularProducts({}: Props) {
 
       <div className=" mt-10 flex overflow-x-scroll space-x-4 p-4  scrollbar-hide">
         {popularProducts?.map((item) => (
-          <Product item={item} />
+          <Product key={item.id} item={item} />
         ))}
       </div>
     </div>
