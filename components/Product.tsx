@@ -1,19 +1,10 @@
 import { HandThumbUpIcon, StarIcon } from "@heroicons/react/24/solid";
 import testimg from "../assests/hero.jpg";
 import Image from "next/image";
+import { Key } from "react";
 
 interface Props {
-  item: {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rate: any;
-    rating: any;
-    count: any;
-  };
+item:any;
 }
 
 function Product({ item }: Props) {

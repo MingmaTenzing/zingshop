@@ -1,12 +1,13 @@
 import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import Product from "./Product";
 
 type Props = {};
 
 interface product {
-  id: number;
+  id: any;
+  key: any;
   title: string;
   price: number;
   description: string;
@@ -43,7 +44,7 @@ function PopularProducts({}: Props) {
       </h1>
 
       <div className=" mt-10 flex overflow-x-scroll space-x-4 p-4  scrollbar-hide">
-        {popularProducts?.map((item) => (
+        {popularProducts?.map((item: {id: Key}) => (
           <Product key={item.id} item={item} />
         ))}
       </div>
