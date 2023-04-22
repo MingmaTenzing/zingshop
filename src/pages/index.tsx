@@ -3,10 +3,15 @@ import Nav from '../../components/Nav'
 import Head from 'next/head'
 import Hero from '../../components/Hero'
 import Categories from '../../components/Categories'
-
+import PopularProducts from '../../components/PopularProducts'
+import { useEffect, useState } from 'react'
+import  axios from "axios"
 
 
 export default function Home() {
+ 
+
+
   return (
     <main>
       <Head>
@@ -18,6 +23,7 @@ export default function Home() {
         <Nav />
         <Hero/>
         <Categories />
+        <PopularProducts />
     </main>
   )
 }
