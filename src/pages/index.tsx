@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Nav from '../../components/Nav'
 import Head from 'next/head'
 import Hero from '../../components/Hero'
+import Categories from '../../components/Categories'
 
 
 
@@ -16,6 +17,7 @@ export default function Home() {
       </Head>
         <Nav />
         <Hero/>
+        <Categories />
     </main>
   )
 }
