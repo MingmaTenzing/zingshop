@@ -3,17 +3,7 @@ import testimg from "../assests/hero.jpg";
 import Image from "next/image";
 
 interface Props {
-  item: {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rate: any;
-    rating: any;
-    count: any;
-  };
+  item: any;
 }
 
 function Product({ item }: Props) {
