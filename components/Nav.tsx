@@ -7,7 +7,7 @@ import Link from "next/link"
 type Props = {}
 function Nav({}: Props) {
   return (
-    <div className="p-4 shadow-lg">
+    <div className="p-4 shadow-lg sticky top-0 z-[100] bg-white">
         <div className="md:hidden">
 
 
