@@ -1,12 +1,15 @@
 import { HandThumbUpIcon, StarIcon } from "@heroicons/react/24/solid";
 import testimg from "../assests/hero.jpg";
 import Image from "next/image";
-
+import { product } from "./PopularProducts";
+ 
 interface Props {
-  item: any;
-}
+ item:product;
 
-function Product({ item }: Props) {
+} 
+
+
+function Product({item} : Props) {
   return (
     <div>
       <div>

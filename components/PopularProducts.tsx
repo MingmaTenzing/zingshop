@@ -1,26 +1,24 @@
 import axios from "axios";
 import Image from "next/image";
-import { Key, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import Product from "./Product";
 
-type Props = {};
-
-interface product {
-  id: any;
-  key: any;
-  title: string;
+ export interface product{
+  rating: any;
+  rate:number;
+  count: number;
   price: number;
   description: string;
   category: string;
+  title: string;
+  id: number;
   image: string;
-  rate: any;
-  rating: any;
-  count: any;
+  
+
 }
 
-function PopularProducts({}: Props) {
-  const [products, setProducts] = useState<product[]>();
-  const [popularProducts, setPopularProducts] = useState<any[]>();
+function PopularProducts() {
+  const [products, setProducts] = useState<product[]>([]);
   useEffect(() => {
     async function fetchdata() {
       const { data } = await axios.get("https://fakestoreapi.com/products");
@@ -29,11 +27,7 @@ function PopularProducts({}: Props) {
     fetchdata();
   }, []);
 
-  useEffect(() => {
-    setPopularProducts(
-      products?.filter((product) => product.rating.rate >= 4)
-    );
-  }, [products]);
+
 
   console.log(products);
 
@@ -44,7 +38,7 @@ function PopularProducts({}: Props) {
       </h1>
 
       <div className=" mt-10 flex overflow-x-scroll space-x-4 p-4  scrollbar-hide">
-        {popularProducts?.map((item: {id: Key}) => (
+        { products?.filter((product) => product.rating.rate >= 4)?.map((item) => (
           <Product key={item.id} item={item} />
         ))}
       </div>
