@@ -1,7 +1,6 @@
 import axios from "axios";
 import Image from "next/image";
 import { Key, useEffect, useState } from "react";
-import Product from "./Product";
 
 type Props = {};
 
@@ -43,8 +42,8 @@ function PopularProducts({}: Props) {
       </h1>
 
       <div className=" mt-10 flex overflow-x-scroll space-x-4 p-4  scrollbar-hide">
-        {popularProducts?.map((item: {id: Key}) => (
-          <Product  key={item.id} item={item} />
+        {popularProducts?.map((item) => (
+          <Product key={item.id} item={item} />
         ))}
       </div>
     </div>
