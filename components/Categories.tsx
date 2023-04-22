@@ -6,10 +6,11 @@ import jewelery from "../assests/jewelery.jpg"
 type Props = {}
 function Categories({}: Props) {
 
-    console.log(Math.floor(4.2))
+    
+
   return (
     <div className="mt-10 p-4">
-        <h1 className=" font-bold text-2xl text-center">Categories </h1>
+        <h1 className=" font-bold text-2xl md:text-3xl underline underline-offset-8 decoration-zingyellow text-center">Categories </h1>
 
         <div className="flex flex-col md:flex-row md:flex-wrap md:space-y-0 md:justify-center items-center space-y-6 mt-8">
 
