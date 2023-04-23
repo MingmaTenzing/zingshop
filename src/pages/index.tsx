@@ -6,6 +6,7 @@ import Categories from '../../components/Categories'
 import PopularProducts from '../../components/PopularProducts'
 import { useEffect, useState } from 'react'
 import  axios from "axios"
+import Partners from '../../components/Partners'
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <Hero/>
         <Categories />
         <PopularProducts />
+        <Partners />
     </main>
   )
 }
