@@ -9,7 +9,7 @@ import Image from "next/image"
 type Props = {};
 function Partners({}: Props) {
   return (
-    <div className="mt-10 p-4 bg-[#f7f7f7]">
+    <div className="mt-10 p-4 bg-[#f7f7f7] pt-10">
         <div className="space-y-3 p-3">
 
     <h2 className=" text-center font-semibold  text-2xl text-gray-700"> No Compromises in Quality</h2>
@@ -18,13 +18,13 @@ function Partners({}: Props) {
             
         </div>
     <div className="flex flex-wrap justify-center mt-4  lg:space-x-20">
-        <Image src={adidas} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80 grayscale object-fill invert-0 m-4" />
-        <Image src={tommy} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80 grayscale object-fill invert-0 m-4" />
-        <Image src={nike} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80 grayscale object-fill invert-0 m-4" />
-        <Image src={acer} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80 grayscale object-fill invert-0 m-4" />
-        <Image src={lenovo} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80 grayscale object-fill invert-0 m-4" />
-        <Image src={msi} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80 grayscale object-fill invert-0 m-4" />
-        <Image src={asus} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80 grayscale object-fill invert-0 m-4" />
+        <Image src={adidas} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80  aspect-[3/2] grayscale object-contain invert-0 m-4" />
+        <Image src={tommy} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80  aspect-[3/2] grayscale object-contain invert-0 m-4" />
+        <Image src={nike} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80  aspect-[3/2] grayscale object-contain invert-0 m-4" />
+        <Image src={acer} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80  aspect-[3/2] grayscale object-contain invert-0 m-4" />
+        <Image src={lenovo} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80  aspect-[3/2] grayscale object-contain invert-0 m-4" />
+        <Image src={msi} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80  aspect-[3/2] grayscale object-contain invert-0 m-4" />
+        <Image src={asus} alt='adidas' width={200} height={200} className="w-[60px]  opacity-80  aspect-[3/2] grayscale object-contain invert-0 m-4" />
 
     </div>
     
