@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import  axios from "axios"
 import Partners from '../../components/Partners'
 import BudgetProducts from '../../components/BudgetProducts'
+import Newsletter from '../../components/Newsletter'
 export interface product{
   rating: any;
   rate:number;
@@ -50,9 +51,10 @@ export default function Home() {
         <Nav />
         <Hero/>
         <Categories />
-        <Partners />
         <PopularProducts products={products}  />
+        <Partners />
         <BudgetProducts items={products} />
+        <Newsletter />
     </main>
   )
 }
