@@ -9,7 +9,7 @@ function Newsletter({}: Props) {
       <p className="text-white font-[300] text-lg md:text-2xl ">
         Stay up-to-date on the latest trends, seasonal collections, and
         exclusive offers from ZingShop - your go-to destination for electronics,
-        men's and women's clothing, and jewelry. Sign up for our newsletter
+        mens and womens clothing, and jewelry. Sign up for our newsletter
         today and never miss a beat!
       </p>
       <div className='space-x-3'>

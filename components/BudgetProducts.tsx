@@ -17,7 +17,7 @@ function BudgetProducts({ items }: { items: product[] }) {
       <div className="mt-10 flex justify-center flex-wrap ">
         {
             budgetitems.map((item) =>
-           (<div className="m-4">
+           (<div className="m-4" key={item.id}>
                 <Product item={item} key={item.id} />
                 </div> ))
             

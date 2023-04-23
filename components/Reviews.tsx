@@ -18,7 +18,7 @@ function Reviews({}: Props) {
             style={{ fontSize: "40px" }}
           />
           <p className="text-sm  font-light text-gray-600">
-            I recently purchased a laptop from ZingShop and I'm really happy
+            I recently purchased a laptop from ZingShop and I&apos;m really happy
             with my purchase. The website was easy to use and the checkout
             process was quick and simple. The laptop arrived on time and was
             exactly what I was looking for. I would definitely shop at ZingShop
@@ -82,11 +82,11 @@ function Reviews({}: Props) {
             style={{ fontSize: "40px" }}
           />
           <p className="text-sm  font-light text-gray-600">
-            I wasn't sure what to expect when I first visited ZingShop, but I
+            I wasn&apos;t sure what to expect when I first visited ZingShop, but I
             was pleasantly surprised. The website is easy to navigate and the
             product descriptions are really detailed. I found exactly what I was
             looking for and the checkout process was a breeze. I received my
-            order on time and everything was in perfect condition. I'm really
+            order on time and everything was in perfect condition. I&apos;m really
             happy with my experience and would definitely recommend ZingShop to
             others.
           </p>
