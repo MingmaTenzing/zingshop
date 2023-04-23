@@ -24,8 +24,8 @@ export default function Home() {
         <Nav />
         <Hero/>
         <Categories />
-        <PopularProducts />
         <Partners />
+        <PopularProducts />
     </main>
   )
 }

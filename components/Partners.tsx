@@ -9,10 +9,10 @@ import Image from "next/image"
 type Props = {};
 function Partners({}: Props) {
   return (
-    <div className="mt-10 p-4 bg-[#f7f7f7] pt-10">
+    <div className="mt-10 p-4 bg-[#f7f7f7] py-20">
         <div className="space-y-3 p-3">
 
-    <h2 className=" text-center font-semibold  text-2xl text-gray-700"> No Compromises in Quality</h2>
+    <h2 className=" text-center font-bold  text-2xl lg:text-3xl text-gray-700"> No Compromises in Quality</h2>
     <p className=" text-center font-light text-gray-600 "> We are partners with world leading brand in clothing and technology</p>
     
             
