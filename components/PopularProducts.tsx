@@ -3,33 +3,14 @@ import Image from "next/image";
 import {  useEffect, useState } from "react";
 import Product from "./Product";
 
- export interface product{
-  rating: any;
-  rate:number;
-  count: number;
-  price: number;
-  description: string;
-  category: string;
-  title: string;
-  id: number;
-  image: string;
-  
-
-}
-
-function PopularProducts() {
-  const [products, setProducts] = useState<product[]>([]);
-  useEffect(() => {
-    async function fetchdata() {
-      const { data } = await axios.get("https://fakestoreapi.com/products");
-      setProducts(data);
-    }
-    fetchdata();
-  }, []);
+import { product } from "@/pages";
 
 
 
-  console.log(products);
+function PopularProducts({ products }: { products: product[] }) {
+
+
+
 
   return (
     <div className="mt-10 p-4">
@@ -41,6 +22,13 @@ function PopularProducts() {
         { products?.filter((product) => product.rating.rate >= 4)?.map((item) => (
           <Product key={item.id} item={item} />
         ))}
+      </div>
+      <div  className=" flex justify-center mt-4">
+      <button  className=" bg-[#2d3a4b] transition-all ease-linear duration-150  hover:bg-zingyellow text-white p-2 font-semibold py-3 text-sm ">
+        View All Shop Items
+
+      </button>
+
       </div>
     </div>
   );

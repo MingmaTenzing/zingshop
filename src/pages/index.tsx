@@ -7,10 +7,36 @@ import PopularProducts from '../../components/PopularProducts'
 import { useEffect, useState } from 'react'
 import  axios from "axios"
 import Partners from '../../components/Partners'
+import BudgetProducts from '../../components/BudgetProducts'
+export interface product{
+  rating: any;
+  rate:number;
+  count: number;
+  price: number;
+  description: string;
+  category: string;
+  title: string;
+  id: number;
+  image: string;
+  
+
+}
+
+
 
 
 export default function Home() {
- 
+  const [products, setProducts] = useState<product[]>([]);
+  useEffect(() => {
+    async function fetchdata() {
+      const { data } = await axios.get("https://fakestoreapi.com/products");
+      setProducts(data);
+    }
+    fetchdata();
+  }, []);
+
+  console.log(products)
+
 
 
   return (
@@ -25,7 +51,8 @@ export default function Home() {
         <Hero/>
         <Categories />
         <Partners />
-        <PopularProducts />
+        <PopularProducts products={products}  />
+        <BudgetProducts items={products} />
     </main>
   )
 }
