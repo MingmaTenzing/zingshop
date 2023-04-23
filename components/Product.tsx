@@ -25,7 +25,7 @@ function Product({item} : Props) {
             Add to Cart
           </button>
         </div>
-        <div className="w-[280px]  bg-slate-100 border p-3 space-y-2">
+        <div className="w-[280px] h-[100px] flex flex-col  justify-center  bg-slate-100 border p-3 space-y-2">
           <h2 className="text-sm font-semibold text-gray-900">
         {item.title}
           </h2>
