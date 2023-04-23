@@ -9,6 +9,7 @@ import  axios from "axios"
 import Partners from '../../components/Partners'
 import BudgetProducts from '../../components/BudgetProducts'
 import Newsletter from '../../components/Newsletter'
+import Reviews from '../../components/Reviews'
 export interface product{
   rating: any;
   rate:number;
@@ -55,6 +56,7 @@ export default function Home() {
         <Partners />
         <BudgetProducts items={products} />
         <Newsletter />
+        <Reviews/>
     </main>
   )
 }
