@@ -7,7 +7,7 @@ import Product from "../../components/Product"
 import Footer from "../../components/Footer"
 
 type Props = {}
-function mensclothing({}: Props) {
+function Mensclothing({}: Props) {
 
     const [mensClothingItems, setmensClothingItems] =  useState<product[]>();
 
@@ -28,7 +28,7 @@ function mensclothing({}: Props) {
 
     <main>
          <Head>
-        <title>Men's Clothing</title>
+        <title>Men&apos;s Clothing</title>
         <meta name="ZingShop" content="ZingShop is a e-commerece site where you can buy mens clothing, womens clothing, electronics and jwelery." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/zingshop-header-logo.png" />
@@ -40,7 +40,7 @@ function mensclothing({}: Props) {
 
 
       <h1 className=" md:text-3xl underline underline-offset-8 decoration-zingyellow text-gray-800 font-bold text-xl text-center ">
-        Men's Clothing
+        Men&apos;s Clothing
       </h1>
 
       <div className=" flex flex-col  items-center md:flex-row md:flex-wrap md:justify-center mt-10  ">
@@ -61,4 +61,4 @@ function mensclothing({}: Props) {
     </main>
   )
 }
-export default mensclothing
+export default Mensclothing

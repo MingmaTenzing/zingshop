@@ -68,13 +68,13 @@ function Nav({}: Props) {
               </div>
               <div className="flex justify-between items-center">
                 <Link href="/mensclothing" className="uppercase">
-                  Men's clothing
+                  Men&apos;s clothing
                 </Link>
                 <ChevronRightIcon className="w-5" />
               </div>
               <div className="flex justify-between items-center">
                 <Link href="/womensclothing" className="uppercase">
-                  womenss clothing
+                  women&apos;s clothing
                 </Link>
                 <ChevronRightIcon className="w-5" />
               </div>
@@ -133,13 +133,13 @@ function Nav({}: Props) {
             </div>
             <div className=" group flex flex-col items-center">
               <Link href="/mensclothing" className=" text-sm uppercase">
-                men's{" "}
+                men&apos;s{" "}
               </Link>
               <span className="block w-0   group-hover:w-full transition-all ease-linear duration-200 bg-zingyellow h-0.5"></span>
             </div>
             <div className=" group flex flex-col items-center">
               <Link href="/womensclothing" className=" text-sm uppercase">
-                women's
+                women&apos;s
               </Link>
               <span className="block w-0   group-hover:w-full transition-all ease-linear duration-200 bg-zingyellow h-0.5"></span>
             </div>

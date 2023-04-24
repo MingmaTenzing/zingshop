@@ -7,7 +7,7 @@ import Product from "../../components/Product"
 import Footer from "../../components/Footer"
 
 type Props = {}
-function allProducts({}: Props) {
+function AllProducts({}: Props) {
 
     const [allProducts, setallProducts] =  useState<product[]>();
 
@@ -61,4 +61,4 @@ function allProducts({}: Props) {
     </main>
   )
 }
-export default allProducts;
+export default AllProducts;

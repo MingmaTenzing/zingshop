@@ -7,7 +7,7 @@ import Product from "../../components/Product"
 import Footer from "../../components/Footer"
 
 type Props = {}
-function electronics({}: Props) {
+function Electronics({}: Props) {
 
     const [electronics, setelectronics] =  useState<product[]>();
 
@@ -61,4 +61,4 @@ function electronics({}: Props) {
     </main>
   )
 }
-export default electronics;
+export default Electronics;

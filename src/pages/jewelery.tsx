@@ -7,7 +7,7 @@ import Product from "../../components/Product"
 import Footer from "../../components/Footer"
 
 type Props = {}
-function jwelery({}: Props) {
+function Jwelery({}: Props) {
 
     const [jwelery, setjwelery] =  useState<product[]>();
 
@@ -61,4 +61,4 @@ function jwelery({}: Props) {
     </main>
   )
 }
-export default jwelery
+export default Jwelery

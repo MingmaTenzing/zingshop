@@ -21,7 +21,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { product } from "..";
 type Props = {};
-function productInfo({}: Props) {
+function ProductInfo({}: Props) {
   const [addtoCartNumber, setaddtoCartNumber] = useState<number>(0);
   const [itemInfo, setitemInfo] = useState<product>();
   const router = useRouter();
@@ -171,4 +171,4 @@ function productInfo({}: Props) {
     </main>
   );
 }
-export default productInfo;
+export default ProductInfo;
