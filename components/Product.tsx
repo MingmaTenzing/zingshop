@@ -2,6 +2,7 @@ import { HandThumbUpIcon, StarIcon } from "@heroicons/react/24/solid";
 import testimg from "../assests/hero.jpg";
 import Image from "next/image";
 import { product } from "@/pages";
+import { useRouter } from "next/router";
 interface Props {
  item:product;
 
@@ -9,8 +10,11 @@ interface Props {
 
 
 function Product({item} : Props) {
+
+  const router = useRouter();
+
   return (
-    <div>
+    <div onClick={() => router.push(`productinfo/${item.id}`)}>
       <div>
         <div className=" relative group w-[280px] h-[280px] border overflow-hidden flex justify-center items-center ">
           <Image
