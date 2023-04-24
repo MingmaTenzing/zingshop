@@ -11,6 +11,7 @@ import BudgetProducts from '../../components/BudgetProducts'
 import Newsletter from '../../components/Newsletter'
 import Reviews from '../../components/Reviews'
 import Footer from '../../components/Footer'
+import Loading from '../../components/Loading'
 export interface product{
   rating: any;
   rate:number;
@@ -33,8 +34,11 @@ export default function Home() {
   useEffect(() => {
     async function fetchdata() {
       const { data } = await axios.get("https://fakestoreapi.com/products");
+      
+     
       setProducts(data);
     }
+  
     fetchdata();
   }, []);
 

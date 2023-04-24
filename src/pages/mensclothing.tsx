@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import Product from "../../components/Product"
 import Footer from "../../components/Footer"
+import Loading from "../../components/Loading"
 
 type Props = {}
 function Mensclothing({}: Props) {
@@ -44,12 +45,16 @@ function Mensclothing({}: Props) {
       </h1>
 
       <div className=" flex flex-col  items-center md:flex-row md:flex-wrap md:justify-center mt-10  ">
-        {
-            mensClothingItems?.map((item) =>
-            <div className="m-4" key={item.id}>
-                 <Product item={item} key={item.id} />
-                 </div>)
-        }
+       {
+        !mensClothingItems? (new Array(4).fill(0).map((_,index) => <Loading key={index}/>)) : ( mensClothingItems?.map((item) =>
+        <div className="m-4" key={item.id}>
+             <Product item={item} key={item.id} />
+             </div>))
+       }
+       
+        
+           
+        
       </div>
       </div>
 

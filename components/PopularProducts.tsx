@@ -4,11 +4,11 @@ import {  useEffect, useState } from "react";
 import Product from "./Product";
 
 import { product } from "@/pages";
+import Loading from  "../components/Loading"
 
 
 
 function PopularProducts({ products }: { products: product[] }) {
-
 
 
 
@@ -19,9 +19,13 @@ function PopularProducts({ products }: { products: product[] }) {
       </h1>
 
       <div className=" mt-10 flex overflow-x-scroll space-x-4 p-4  scrollbar-hide">
-        { products?.filter((product) => product.rating.rate >= 4)?.map((item) => (
-          <Product key={item.id} item={item} />
-        ))}
+
+        {
+          !products? (new Array(4).fill(0).map((_, index) => (<Loading key={index} />))):(products.filter((product) => product.rating.rate >= 4)?.map((item) => (
+            <Product key={item.id} item={item} />
+          )))
+        }
+
       </div>
       <div  className=" flex justify-center mt-4">
       <button  className=" bg-[#2d3a4b] transition-all ease-linear duration-150  hover:bg-zingyellow text-white p-2 font-semibold py-3 text-sm ">
