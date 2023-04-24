@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        zingyellow: "#ffde59"
+        zingyellow: "#ffde59",
+        footertext: "#999999"
       }
      
     },

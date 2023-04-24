@@ -10,6 +10,7 @@ import Partners from '../../components/Partners'
 import BudgetProducts from '../../components/BudgetProducts'
 import Newsletter from '../../components/Newsletter'
 import Reviews from '../../components/Reviews'
+import Footer from '../../components/Footer'
 export interface product{
   rating: any;
   rate:number;
@@ -57,6 +58,7 @@ export default function Home() {
         <BudgetProducts items={products} />
         <Newsletter />
         <Reviews/>
+        <Footer />
     </main>
   )
 }
