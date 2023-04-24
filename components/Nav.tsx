@@ -61,6 +61,12 @@ function Nav({}: Props) {
                 <ChevronRightIcon className="w-5" />
               </div>
               <div className="flex justify-between items-center">
+                <Link href="/allproducts" className="uppercase">
+                  All Products
+                </Link>
+                <ChevronRightIcon className="w-5" />
+              </div>
+              <div className="flex justify-between items-center">
                 <Link href="/mensclothing" className="uppercase">
                   Men's clothing
                 </Link>
@@ -116,6 +122,12 @@ function Nav({}: Props) {
             <div className=" group flex flex-col items-center">
               <Link href="/" className=" text-sm uppercase">
                 home
+              </Link>
+              <span className="block w-0   group-hover:w-full transition-all ease-linear duration-200 bg-zingyellow h-0.5"></span>
+            </div>
+            <div className=" group flex flex-col items-center">
+              <Link href="/allproducts" className=" text-sm uppercase">
+                All Products
               </Link>
               <span className="block w-0   group-hover:w-full transition-all ease-linear duration-200 bg-zingyellow h-0.5"></span>
             </div>
