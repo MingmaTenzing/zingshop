@@ -22,6 +22,7 @@ export interface product{
   title: string;
   id: number;
   image: string;
+  cartQuantity: number;
   
 
 }

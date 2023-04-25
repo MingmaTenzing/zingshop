@@ -6,9 +6,18 @@ import axios from "axios"
 import Product from "../../components/Product"
 import Footer from "../../components/Footer"
 import Loading from "../../components/Loading"
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from  "../../slices/counterSlice"
+import { RootState } from "../../store"
+
+
 
 type Props = {}
 function Electronics({}: Props) {
+
+  const number = useSelector((state:RootState) => state.cart.cartItems)
+  console.log(number)
+const dispatch = useDispatch();
 
     const [electronics, setelectronics] =  useState<product[]>();
 
@@ -36,6 +45,7 @@ function Electronics({}: Props) {
       </Head>
 
       <Nav />
+     
 
       <div className="mt-10 p-4">
 

@@ -20,6 +20,9 @@ import Footer from "../../../components/Footer";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { product } from "..";
+import { useSelector, useDispatch } from 'react-redux'
+import { additemtoCart, removeitemfromCart } from "../../../slices/cartSlice";
+
 type Props = {};
 function ProductInfo({}: Props) {
   const [addtoCartNumber, setaddtoCartNumber] = useState<number>(0);
@@ -27,7 +30,7 @@ function ProductInfo({}: Props) {
   const router = useRouter();
   const itemId = router.query.productid;
   const rating = Math.floor(itemInfo?.rating.rate);
-  console.log(Number.isInteger(!itemInfo?.rating.rate));
+const dispatch =useDispatch();
 
   useEffect(() => {
     async function fetchItemInfo() {
@@ -56,7 +59,7 @@ function ProductInfo({}: Props) {
 
       <Nav />
 
-      <div className="my-10 p-4  md:flex md:justify-center md:space-x-8">
+      <div  className="my-10 p-4  md:flex md:justify-center md:space-x-8">
         <div className="flex justify-center">
           <Image
             src={itemInfo?.image || logo}
@@ -138,10 +141,13 @@ function ProductInfo({}: Props) {
           </div>
 
           <div>
-            <button className="uppercase  bg-[#2d3a4b] text-sm text-white font-semibold w-full h-10">
+            {
+              itemInfo &&   <button onClick={() => dispatch(additemtoCart(itemInfo))} className="uppercase  bg-[#2d3a4b] text-sm text-white font-semibold w-full h-10">
               {" "}
               add to cart{" "}
             </button>
+            }
+          
           </div>
 
           <div className=" space-y-3">
@@ -150,10 +156,12 @@ function ProductInfo({}: Props) {
             </h2>
 
             <div className="space-x-2">
-              <FacebookIcon
+             <FacebookIcon
                 className="text-gray-600"
                 style={{ fontSize: "30px" }}
               />
+          
+             
               <TwitterIcon
                 className="text-gray-600"
                 style={{ fontSize: "30px" }}

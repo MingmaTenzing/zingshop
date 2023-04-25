@@ -22,7 +22,7 @@ function Newsletter({}: Props) {
         <h2 className='text-white  text-3xl'> Subscribe to NewsLetter</h2>
         <div className='flex  items-center'>
             
-        <input placeholder='enter your email address ' className=' text-white w-[300px] h-[50px] bg-transparent outline-none border p-2 border-white'></input>
+        <input placeholder='enter your email address ' className=' text-white w-1/2  md:w-[300px] h-[50px] bg-transparent outline-none border p-2 border-white'></input>
         <button className=' bg-gray-800 text-white h-[50px] p-2'>Subscribe</button>
         </div>
 
