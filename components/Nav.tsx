@@ -36,7 +36,9 @@ function Nav({}: Props) {
         <div className="flex justify-between mt-4">
           <div className="flex space-x-2">
             <UserIcon className="w-8 border p-1 rounded-full border-gray-600" />
+           <Link href="/cart">
             <ShoppingCartIcon className="w-8 border p-1 rounded-full border-gray-600" />
+           </Link>
             <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" />
           </div>
           <div>
@@ -159,7 +161,9 @@ function Nav({}: Props) {
         </div>
         <div className="flex space-x-2">
           <UserIcon className="w-8 border p-1 rounded-full border-gray-600" />
-          <ShoppingCartIcon className="w-8 border p-1 rounded-full border-gray-600" />
+         <Link href="/cart">
+         <ShoppingCartIcon className="w-8 border p-1 rounded-full border-gray-600" />
+         </Link> 
           <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" />
         </div>
       </div>

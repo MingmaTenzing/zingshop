@@ -12,6 +12,7 @@ export interface cartItem {
   id: number;
   image: string;
   cartQuantity: number;
+  itemPrice: number;
 }
 
 
@@ -22,7 +23,7 @@ const initialState: cartState = {
   cartItems: [],
 };
 
-export const counterSlice = createSlice({
+export const carSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -31,6 +32,7 @@ export const counterSlice = createSlice({
         const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
         if ( itemIndex >= 0) {
             state.cartItems[itemIndex].cartQuantity += 1;
+          
         }
         else{
             const tempProduct = { ...action.payload, cartQuantity: 1};
@@ -39,6 +41,21 @@ export const counterSlice = createSlice({
         }
 
     }, 
+
+    decreaseitemfromCart: ( state, action: PayloadAction<cartItem>) => { 
+      const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
+      if ( itemIndex >= 0) {
+          state.cartItems[itemIndex].cartQuantity -= 1;
+        
+      }
+      else{
+          const tempProduct = { ...action.payload, cartQuantity: 1};
+
+          state.cartItems.push(tempProduct);
+      }
+    
+    }
+    ,
 
     removeitemfromCart: (state, action: PayloadAction<cartItem>) => { 
         state.cartItems = state.cartItems.filter(item => item.id !== action.payload.id)
@@ -50,6 +67,6 @@ export const counterSlice = createSlice({
 }});
 
 // Action creators are generated for each case reducer function
-export const { additemtoCart, removeitemfromCart } = counterSlice.actions;
+export const { additemtoCart, removeitemfromCart } = carSlice.actions;
 
-export default counterSlice.reducer;
+export default carSlice.reducer;

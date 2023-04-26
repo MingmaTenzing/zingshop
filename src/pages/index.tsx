@@ -23,6 +23,7 @@ export interface product{
   id: number;
   image: string;
   cartQuantity: number;
+  itemPrice: number;
   
 
 }
