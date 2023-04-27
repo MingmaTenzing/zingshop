@@ -12,11 +12,12 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useAppSelector } from "../hooks";
 
 type Props = {};
 function Nav({}: Props) {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
   const [style, setStyle] = useState<string>("");
 
   return (
@@ -36,9 +37,16 @@ function Nav({}: Props) {
         <div className="flex justify-between mt-4">
           <div className="flex space-x-2">
             <UserIcon className="w-8 border p-1 rounded-full border-gray-600" />
-           <Link href="/cart">
-            <ShoppingCartIcon className="w-8 border p-1 rounded-full border-gray-600" />
-           </Link>
+            <Link href="/cart">
+              <div className=" relative">
+                <ShoppingCartIcon className="w-8 relative border p-1 rounded-full border-gray-600" />
+                {cartItems.length > 0 && (
+                  <span className="absolute -top-1  -left-2 bg-red-600 text-white rounded-full px-[6px] text-center text-sm">
+                    {cartItems.length}
+                  </span>
+                )}
+              </div>
+            </Link>
             <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" />
           </div>
           <div>
@@ -161,9 +169,16 @@ function Nav({}: Props) {
         </div>
         <div className="flex space-x-2">
           <UserIcon className="w-8 border p-1 rounded-full border-gray-600" />
-         <Link href="/cart">
-         <ShoppingCartIcon className="w-8 border p-1 rounded-full border-gray-600" />
-         </Link> 
+          <Link href="/cart">
+              <div className=" relative">
+                <ShoppingCartIcon className="w-8 relative border p-1 rounded-full border-gray-600" />
+                {cartItems.length > 0 && (
+                  <span className="absolute -top-1  -left-2 bg-red-600 text-white rounded-full px-[6px] text-center text-sm">
+                    {cartItems.length}
+                  </span>
+                )}
+              </div>
+            </Link>
           <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" />
         </div>
       </div>

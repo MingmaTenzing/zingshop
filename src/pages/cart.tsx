@@ -10,7 +10,7 @@ import {
   PlusIcon,
   XCircleIcon,
 } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { data } from "../../data";
@@ -27,15 +27,21 @@ function Cart({}: Props) {
   const dispatch = useAppDispatch();
 
   const cartItems = useAppSelector((state) => state.cart.cartItems);
-  console.log(cartItems);
-
   const [totalPrice, setTotalPrice] = useState<number>(0);
-let price=0;
-  data.forEach((item) => (
-    price += (item.price * item.cartQuantity)
-  ))
 
-  console.log(price);
+  useEffect(() => {
+    let price = 0;
+    cartItems.forEach((item) => {
+      setTotalPrice (price += (item.price * item.cartQuantity) )  
+    })
+  },[cartItems])
+  
+  
+
+
+
+
+
 
 
   return (
@@ -85,7 +91,7 @@ let price=0;
         </div>
 
         <div className=" flex flex-col justify-center items-center space-y-4">
-          {data.map((item) => (
+          {cartItems.map((item) => (
             <div key={item.id} className="max-w-[full]">
               <div className="p-2 flex justify-center items-center">
                 <div className="min-w-[100px] md:w-[200px] lg:w-[300px] flex justify-center flex-col items-center">
@@ -175,18 +181,18 @@ let price=0;
             <div className="space-y-4">
               <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
                 <h3 className="font-light">Subtotal</h3>
-                <p>$3000</p>
+                <p>${totalPrice.toFixed(2)}</p>
               </div>
 
               <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
                 <h3 className="font-light">Tax</h3>
-                <p>$100</p>
+                <p>${(totalPrice*15/100).toFixed(2)}</p>
               </div>
               <div className="flex justify-between pb-2  ">
                 <h3 className="font-bold text-gray-700 uppercase">
                   Total Cost
                 </h3>
-                <p className="font-bold text-gray-700 uppercase">$100</p>
+                <p className="font-bold text-gray-700 uppercase">${(totalPrice + (totalPrice *15/100)).toFixed(2)}</p>
               </div>
             </div>
             <div className="flex justify-center mt-4">
