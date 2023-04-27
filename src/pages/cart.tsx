@@ -3,24 +3,31 @@ import Nav from "../../components/Nav";
 import Image from "next/image";
 import cartbg from "../../assests/cart.jpg";
 import hero from "../../assests/hero.jpg";
-import { ArrowSmallDownIcon, ArrowSmallUpIcon, MinusIcon, PlusIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowSmallDownIcon,
+  ArrowSmallUpIcon,
+  MinusIcon,
+  PlusIcon,
+  XCircleIcon,
+} from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { data } from "../../data";
-import { additemtoCart, carSlice, decreaseitemfromCart } from "../../slices/cartSlice";
+import {
+  additemtoCart,
+  carSlice,
+  decreaseitemfromCart,
+  removeitemfromCart,
+} from "../../slices/cartSlice";
 
 type Props = {};
 function Cart({}: Props) {
   const dispatch = useAppDispatch();
 
-  const cartItems = useAppSelector((state) => state.cart.cartItems)
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
   console.log(cartItems);
-  
-  const [quantity, setQuantity]  = useState<number>();
-  
-  
-  console.log(quantity)
+
   return (
     <main>
       <Head>
@@ -49,84 +56,140 @@ function Cart({}: Props) {
           </h1>
         </div>
 
-        <div className="mt-10 p-2 flex max-w-[90%]">
-          <div className="bg-[#212529] border-[0.5px] min-w-[100px] ">
+        <div className="mt-10 p-2 flex justify-center ">
+          <div className="bg-[#212529] border-[0.5px] min-w-[100px] md:w-[200px] lg:w-[300px]  ">
             <p className="text-white text-center font-semibold p-2">Items</p>
           </div>
-          <div className="bg-[#212529] border-[0.5px] min-w-[70px] ">
+          <div className="bg-[#212529] border-[0.5px] min-w-[70px] md:w-[150px] lg:w-[200px] ">
             <p className="text-white text-center font-semibold p-2">Price</p>
           </div>
-          <div className="bg-[#212529] border-[0.5px] min-w-[90px] ">
+          <div className="bg-[#212529] border-[0.5px] min-w-[90px] md:w-[150px] lg:w-[200px]">
             <p className="text-white text-center font-semibold p-2">Qty</p>
           </div>
-          <div className="bg-[#212529] border-[0.5px] min-w-[80px] ">
+          <div className="bg-[#212529] border-[0.5px] min-w-[80px] md:w-[200px] lg:w-[300px]">
             <p className="text-white text-center font-semibold p-2">Total</p>
           </div>
-          <div className="bg-[#212529] border-[0.5px] min-w-[30px] ">
+          <div className="bg-[#212529] border-[0.5px] min-w-[30px] md:w-[100px] lg:w-[200px]">
             <p className="text-white text-center font-semibold p-2"></p>
           </div>
         </div>
 
-        {
-          cartItems.map((item) => (
-            <div  key={item.id} className="max-w-[full]">
-            <div className="p-2 flex justify-center items-center">
-              <div className="min-w-[100px]">
-                <Image
-                  src={item.image}
-                  alt="product image"
-                  width={200}
-                  height={50}
-                  className="border w-[60px] m-auto"
-                />
-                <h2 className="text-sm text-center">{item.title}</h2>
-              </div>
-    
-              <div className="min-w-[70px]">
-                <p className="font-bold text-center ">${item.price}</p>
-              </div>
-              <div className="min-w-[90px] flex justify-center ">
+        <div className=" flex flex-col justify-center items-center space-y-4">
+          {data.map((item) => (
+            <div key={item.id} className="max-w-[full]">
+              <div className="p-2 flex justify-center items-center">
+                <div className="min-w-[100px] md:w-[200px] lg:w-[300px] flex justify-center flex-col items-center">
+                  <Image
+                    src={item.image}
+                    alt="product image"
+                    width={200}
+                    height={50}
+                    className="border w-[60px] md:w-[100px] m-auto"
+                  />
+                  <h2 className="text-sm text-center md:text-base md:text-gray-700">
+                    {item.title}
+                  </h2>
+                </div>
 
-                <div className="flex items-center space-x-2 border">
-                  <p className="p-2">{item.cartQuantity}</p>
-                  <div  className="flex flex-col space-y-1">
-                <button onClick={() => dispatch(additemtoCart(item))}  >
-                    <ArrowSmallUpIcon className="w-6 p-1 bg-slate-300"/>
-                  </button>
-                  <button  onClick={() => dispatch(decreaseitemfromCart(item))} >
-
-                  <ArrowSmallDownIcon className="w-6 p-1 bg-slate-300"/>
-
-                  </button>
-                  
-
+                <div className="min-w-[70px] md:w-[150px] lg:w-[200px] flex justify-center">
+                  <p className="font-bold text-center text-gray-800 md:text-lg">
+                    ${item.price}
+                  </p>
+                </div>
+                <div className="min-w-[90px] md:w-[150px] lg:w-[200px] flex justify-center ">
+                  <div className="flex items-center space-x-2 border">
+                    <p className="p-2 text-gray-700">{item.cartQuantity}</p>
+                    <div className="flex flex-col space-y-1">
+                      <button onClick={() => dispatch(additemtoCart(item))}>
+                        <ArrowSmallUpIcon className="w-6 p-1 bg-slate-300 text-gray-800" />
+                      </button>
+                      <button
+                        onClick={() => dispatch(decreaseitemfromCart(item))}
+                      >
+                        <ArrowSmallDownIcon className="w-6 p-1 bg-slate-300 text-gray-800" />
+                      </button>
                     </div>
-
-
                   </div>
-             
+                </div>
+                <div className="min-w-[80px] md:w-[200px] lg:w-[300px] flex justify-center">
+                  <p className=" text-center font-semibold text-gray-800 md:text-lg">
+                    ${(item.price * item.cartQuantity).toFixed(2)}
+                  </p>{" "}
+                </div>
+                <div className="min-w-[30px] md:w-[100px] lg:w-[200px] flex justify-center ">
+                  <button onClick={() => dispatch(removeitemfromCart(item))}>
+                    <XCircleIcon className="w-6 m-auto text-red-600" />
+                  </button>
+                </div>
               </div>
-              <div className="min-w-[80px]">
-                <p className=" text-center font-semibold">${(item.price * item.cartQuantity).toFixed(2) }</p>{" "}
-              </div> 
-              <div className="min-w-[30px] ">
-                <XCircleIcon className="w-4 m-auto" />
-                
-              </div>
-    
-    
-              
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/** discount CODE */}
+
+      <div className="mt-10">
+        <div className="bg-[#eeeeee] py-10 p-4">
+          <h2 className=" font-semibold text-xl text-gray-700  underline underline-offset-8 decoration-zingyellow ">
+            Discount Code
+          </h2>
+
+          <div className=" bg-gray-300  h-[100px] flex justify-center items-center p-2 mt-4">
+            <input
+              className="text-sm h-10 p-2 outline-none uppercase"
+              type="text"
+              placeholder="Code"
+            ></input>
+            <button className="bg-[#2d3a4b] uppercase text-white h-10 p-2 font-semibold text-sm">
+              Apply Code
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-4 p-4">
+          <button className="uppercase  font-semibold p-3 text-gray-700 bg-[#eeeeee]">
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+
+{/** GRAND TOTAL */}
+      <div className=" p-4  bg-[#eeeeee] py-10">
+
+        <h2 className="font-semibold text-xl text-gray-700  underline underline-offset-8 decoration-zingyellow ">Grand Total</h2>
+        <div className="  border-2 border-[#2d3a4b]  mt-8 p-4">
+          
+          <div className="space-y-4">
+
+
+          <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
+          <h3  className="font-light">Subtotal</h3>
+          <p>$3000</p>
+
+          </div>
       
-    
-    
-            </div>
-          ))
-        }
+          <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
+          <h3  className="font-light">Tax</h3>
+          <p>$100</p>
 
-     
+          </div>
+          <div className="flex justify-between pb-2  ">
+          <h3  className="font-bold text-gray-700 uppercase">Total Cost</h3>
+          <p  className="font-bold text-gray-700 uppercase">$100</p>
 
-       
+          </div>
+          </div>
+          <div className="flex justify-center mt-4">
+
+          <button className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8">proceed to checkout</button>
+
+          </div>
+
+
+        </div>
+
+
       </div>
     </main>
   );
