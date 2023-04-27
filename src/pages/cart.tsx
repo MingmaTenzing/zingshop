@@ -20,6 +20,7 @@ import {
   decreaseitemfromCart,
   removeitemfromCart,
 } from "../../slices/cartSlice";
+import Footer from "../../components/Footer";
 
 type Props = {};
 function Cart({}: Props) {
@@ -127,70 +128,68 @@ function Cart({}: Props) {
         </div>
       </div>
 
-      {/** discount CODE */}
+      <div className="md:flex md:space-x-10 bg-[#eeeeee] md:justify-center lg:py-20 mt-10   ">
+        {/** discount CODE */}
 
-      <div className="mt-10">
-        <div className="bg-[#eeeeee] py-10 p-4">
-          <h2 className=" font-semibold text-xl text-gray-700  underline underline-offset-8 decoration-zingyellow ">
-            Discount Code
-          </h2>
+        <div className="mt-10 md:mt-0 lg:w-[500px]">
+          <div className=" py-10 p-4">
+            <h2 className=" font-semibold text-xl md:text-2xl text-gray-700  underline underline-offset-8 decoration-zingyellow ">
+              Discount Code
+            </h2>
 
-          <div className=" bg-gray-300  h-[100px] flex justify-center items-center p-2 mt-4">
-            <input
-              className="text-sm h-10 p-2 outline-none uppercase"
-              type="text"
-              placeholder="Code"
-            ></input>
-            <button className="bg-[#2d3a4b] uppercase text-white h-10 p-2 font-semibold text-sm">
-              Apply Code
+            <div className=" bg-gray-300  h-[100px] lg:h-[80px] md:w-[300px] lg:w-[400px] flex justify-center items-center p-2 mt-8">
+              <input
+                className="text-sm h-10 p-2 outline-none uppercase lg:w-[250px]"
+                type="text"
+                placeholder="Code"
+              ></input>
+              <button className="bg-[#2d3a4b] uppercase text-white h-10 p-2 font-semibold text-sm">
+                Apply Code
+              </button>
+            </div>
+            <div className=" mt-5 ">
+            <button className="uppercase  font-semibold p-3 text-gray-700 bg-gray-300">
+              Continue Shopping
             </button>
           </div>
-        </div>
+          </div>
 
-        <div className="mt-4 p-4">
-          <button className="uppercase  font-semibold p-3 text-gray-700 bg-[#eeeeee]">
-            Continue Shopping
-          </button>
-        </div>
-      </div>
-
-{/** GRAND TOTAL */}
-      <div className=" p-4  bg-[#eeeeee] py-10">
-
-        <h2 className="font-semibold text-xl text-gray-700  underline underline-offset-8 decoration-zingyellow ">Grand Total</h2>
-        <div className="  border-2 border-[#2d3a4b]  mt-8 p-4">
           
-          <div className="space-y-4">
-
-
-          <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
-          <h3  className="font-light">Subtotal</h3>
-          <p>$3000</p>
-
-          </div>
-      
-          <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
-          <h3  className="font-light">Tax</h3>
-          <p>$100</p>
-
-          </div>
-          <div className="flex justify-between pb-2  ">
-          <h3  className="font-bold text-gray-700 uppercase">Total Cost</h3>
-          <p  className="font-bold text-gray-700 uppercase">$100</p>
-
-          </div>
-          </div>
-          <div className="flex justify-center mt-4">
-
-          <button className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8">proceed to checkout</button>
-
-          </div>
-
-
         </div>
 
+        {/** GRAND TOTAL */}
+        <div className=" p-4   py-10">
+          <h2 className=" md:text-2xl font-semibold text-xl text-gray-700  underline underline-offset-8 decoration-zingyellow ">
+            Grand Total
+          </h2>
+          <div className=" bg-[#FFFFFF] border-2 border-[#2d3a4b] lg:w-[500px] mt-8 p-4 lg:p-6">
+            <div className="space-y-4">
+              <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
+                <h3 className="font-light">Subtotal</h3>
+                <p>$3000</p>
+              </div>
 
+              <div className="flex justify-between pb-2  border-b-[0.5px] text-gray-600 border-gray-400">
+                <h3 className="font-light">Tax</h3>
+                <p>$100</p>
+              </div>
+              <div className="flex justify-between pb-2  ">
+                <h3 className="font-bold text-gray-700 uppercase">
+                  Total Cost
+                </h3>
+                <p className="font-bold text-gray-700 uppercase">$100</p>
+              </div>
+            </div>
+            <div className="flex justify-center mt-4">
+              <button className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8">
+                proceed to checkout
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <Footer/>
     </main>
   );
 }
