@@ -43,15 +43,14 @@ export const carSlice = createSlice({
     }, 
 
     decreaseitemfromCart: ( state, action: PayloadAction<cartItem>) => { 
-      const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
-      if ( itemIndex >= 0) {
-          state.cartItems[itemIndex].cartQuantity -= 1;
-        
+     
+     const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
+      if (action.payload.cartQuantity >= 2) {
+        state.cartItems[itemIndex].cartQuantity -= 1;
       }
-      else{
-          const tempProduct = { ...action.payload, cartQuantity: 1};
 
-          state.cartItems.push(tempProduct);
+      else {
+        state.cartItems[itemIndex]. cartQuantity = 1;
       }
     
     }
@@ -67,6 +66,6 @@ export const carSlice = createSlice({
 }});
 
 // Action creators are generated for each case reducer function
-export const { additemtoCart, removeitemfromCart } = carSlice.actions;
+export const { additemtoCart,decreaseitemfromCart, removeitemfromCart } = carSlice.actions;
 
 export default carSlice.reducer;

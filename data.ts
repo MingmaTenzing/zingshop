@@ -11,7 +11,7 @@ export const data=[
             "rate": 4.1,
             "count": 259
         },
-        "cartQuantity": 1
+        "cartQuantity": 10
     },
     {
         "id": 5,
@@ -24,7 +24,7 @@ export const data=[
             "rate": 4.6,
             "count": 400
         },
-        "cartQuantity": 1
+        "cartQuantity": 19
     },
     {
         "id": 10,

@@ -3,14 +3,16 @@ import Nav from "../../components/Nav";
 import Image from "next/image";
 import cartbg from "../../assests/cart.jpg";
 import hero from "../../assests/hero.jpg";
-import { XCircleIcon } from "@heroicons/react/24/outline";
+import { ArrowSmallDownIcon, ArrowSmallUpIcon, MinusIcon, PlusIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { data } from "../../data";
+import { additemtoCart, carSlice, decreaseitemfromCart } from "../../slices/cartSlice";
 
 type Props = {};
 function Cart({}: Props) {
+  const dispatch = useAppDispatch();
 
   const cartItems = useAppSelector((state) => state.cart.cartItems)
   console.log(cartItems);
@@ -66,7 +68,7 @@ function Cart({}: Props) {
         </div>
 
         {
-          data.map((item) => (
+          cartItems.map((item) => (
             <div  key={item.id} className="max-w-[full]">
             <div className="p-2 flex justify-center items-center">
               <div className="min-w-[100px]">
@@ -83,19 +85,29 @@ function Cart({}: Props) {
               <div className="min-w-[70px]">
                 <p className="font-bold text-center ">${item.price}</p>
               </div>
-              <div className="min-w-[90px] ">
-                <input
-                  type="number"
-                  min="0"
-                  max="20"
+              <div className="min-w-[90px] flex justify-center ">
+
+                <div className="flex items-center space-x-2 border">
+                  <p className="p-2">{item.cartQuantity}</p>
+                  <div  className="flex flex-col space-y-1">
+                <button onClick={() => dispatch(additemtoCart(item))}  >
+                    <ArrowSmallUpIcon className="w-6 p-1 bg-slate-300"/>
+                  </button>
+                  <button  onClick={() => dispatch(decreaseitemfromCart(item))} >
+
+                  <ArrowSmallDownIcon className="w-6 p-1 bg-slate-300"/>
+
+                  </button>
                   
-                  defaultValue={item.cartQuantity}
-                  onChange={(e) => setQuantity((e.target.valueAsNumber))}
-                  className="border w-[90%] text-center "
-                />
+
+                    </div>
+
+
+                  </div>
+             
               </div>
               <div className="min-w-[80px]">
-                <p className=" text-center">{item.price * item.cartQuantity }</p>{" "}
+                <p className=" text-center font-semibold">${(item.price * item.cartQuantity).toFixed(2) }</p>{" "}
               </div> 
               <div className="min-w-[30px] ">
                 <XCircleIcon className="w-4 m-auto" />
