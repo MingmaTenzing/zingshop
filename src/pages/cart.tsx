@@ -29,6 +29,15 @@ function Cart({}: Props) {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   console.log(cartItems);
 
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+let price=0;
+  data.forEach((item) => (
+    price += (item.price * item.cartQuantity)
+  ))
+
+  console.log(price);
+
+
   return (
     <main>
       <Head>
