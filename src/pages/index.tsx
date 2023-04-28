@@ -32,6 +32,7 @@ export interface product{
 
 
 export default function Home() {
+
   const [products, setProducts] = useState<product[]>([]);
   useEffect(() => {
     async function fetchdata() {
