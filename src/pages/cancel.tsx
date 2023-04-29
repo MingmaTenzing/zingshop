@@ -3,7 +3,7 @@ import Nav from "../../components/Nav"
 import Head from "next/head";
 
 type Props = {}
-function cancel({}: Props) {
+function Cancel({}: Props) {
     const router = useRouter();
   return (
     <div className="">
@@ -33,4 +33,4 @@ function cancel({}: Props) {
     </div>
   )
 }
-export default cancel
+export default Cancel

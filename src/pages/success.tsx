@@ -3,7 +3,7 @@ import Nav from "../../components/Nav";
 import Head from "next/head";
 
 type Props = {};
-function success({}: Props) {
+function Success({}: Props) {
   const router = useRouter();
   return (
     <div className="">
@@ -33,4 +33,4 @@ function success({}: Props) {
     </div>
   );
 }
-export default success;
+export default Success;
