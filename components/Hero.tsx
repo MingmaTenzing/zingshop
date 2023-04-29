@@ -9,7 +9,7 @@ function Hero({}: Props) {
             <div className="space-y-6 pt-20 md:pt-40 z-10 p-10 lg:px-20  ">
                 <h2 className=" font-semibold text-3xl  text-gray-700">$299.99</h2>
                 <h2 className=" font-light text-3xl text-gray-600">Summer/Winter 2023</h2>
-                <h1 className="font-bold text-5xl text-zingyellow">All of the Best Collections</h1>
+                <h1 className="font-bold text-5xl text-gray-800 md:text-zingyellow ">All of the Best Collections</h1>
            
            <button className="bg-zingyellow  p-4 text-gray-700 font-semibold">Shop Now</button>
             </div>

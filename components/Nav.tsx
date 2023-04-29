@@ -36,7 +36,7 @@ function Nav({}: Props) {
         </div>
         <div className="flex justify-between mt-4">
           <div className="flex space-x-2">
-            <UserIcon className="w-8 border p-1 rounded-full border-gray-600" />
+            <UserIcon className="w-8 border p-1 rounded-full border-gray-600" onClick={() => alert('The function is not available')}/>
             <Link href="/cart">
               <div className=" relative">
                 <ShoppingCartIcon className="w-8 relative border p-1 rounded-full border-gray-600" />
@@ -47,7 +47,7 @@ function Nav({}: Props) {
                 )}
               </div>
             </Link>
-            <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" />
+            <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" onClick={() => alert("Search functionality is not available at the moment")}/>
           </div>
           <div>
             <Bars3Icon
@@ -168,7 +168,7 @@ function Nav({}: Props) {
           </div>
         </div>
         <div className="flex space-x-2">
-          <UserIcon className="w-8 border p-1 rounded-full border-gray-600" />
+          <UserIcon className="w-8 border p-1 rounded-full border-gray-600" onClick={() => alert('this function is not available at the moment')} />
           <Link href="/cart">
               <div className=" relative">
                 <ShoppingCartIcon className="w-8 relative border p-1 rounded-full border-gray-600" />
@@ -179,7 +179,7 @@ function Nav({}: Props) {
                 )}
               </div>
             </Link>
-          <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" />
+          <MagnifyingGlassIcon className="w-8 border p-1 rounded-full border-gray-600" onClick={() => alert("Search functionality is not available at the moment")}/>
         </div>
       </div>
     </div>

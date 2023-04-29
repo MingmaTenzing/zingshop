@@ -31,7 +31,7 @@ export default async (req:NextApiRequest, res:NextApiResponse) => {
         line_items: transformedItems,
         mode:'payment',
         success_url: `${process.env.HOST}/success`,
-        cancel_url: `${process.env.HOST}/cart`,
+        cancel_url: `${process.env.HOST}/cancel`,
     });
 
 

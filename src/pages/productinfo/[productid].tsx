@@ -20,17 +20,18 @@ import Footer from "../../../components/Footer";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { product } from "..";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import { additemtoCart, removeitemfromCart } from "../../../slices/cartSlice";
+import ProductInfoLoading from "../../../components/Product-Info-Loading";
 
 type Props = {};
 function ProductInfo({}: Props) {
-  const [addtoCartNumber, setaddtoCartNumber] = useState<number>(0);
   const [itemInfo, setitemInfo] = useState<product>();
   const router = useRouter();
   const itemId = router.query.productid;
   const rating = Math.floor(itemInfo?.rating.rate);
-const dispatch =useDispatch();
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchItemInfo() {
@@ -59,121 +60,106 @@ const dispatch =useDispatch();
 
       <Nav />
 
-      <div  className="my-10 p-4  md:flex md:justify-center md:space-x-8">
-        <div className="flex justify-center">
-          <Image
-            src={itemInfo?.image || logo}
-            width={663}
-            height={879}
-            alt="product image"
-            className="w-[300px] md:w-[300px]  p-4 border object-contain"
-          />
+      {!itemInfo ? (
+        <div>
+          <ProductInfoLoading />
         </div>
-
-        <div className="mt-4 md:w-1/2 lg:w-1/3 md:mt-0 space-y-5">
-          <div className="space-y-2">
-            <h1 className="  text-2xl text-gray-800">{itemInfo?.title}</h1>
-            <span className="w-[30px] block  h-[1.5px] bg-gray-700"></span>
-          </div>
-
-          <div className="flex">
-            {rating &&
-              new Array(rating)
-                .fill(0)
-                .map((_, index) => <StarIcon className=" text-zingyellow"  key={index}/>)}
-            {Number.isInteger(itemInfo?.rating.rate) ? (
-              <></>
-            ) : (
-              <>
-                {" "}
-                <StarHalfIcon className=" text-zingyellow" />{" "}
-              </>
-            )}
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800">
-              ${itemInfo?.price}
-            </h2>
-          </div>
-
-          <div className=" flex  justify-between border-y p-3">
-            <div className=" flex items-center space-x-2">
-              <BookmarkIcon className="w-6 text-gray-500" />
-              <p className="text-gray-500 uppercase text-sm">
-                {itemInfo?.category}
-              </p>
-            </div>
-            <div className=" flex items-center space-x-2">
-              <HandThumbUpIcon className="w-6 text-gray-500" />
-              <p className="text-gray-500 text-sm">{itemInfo?.rating.count}</p>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-gray-700">{itemInfo?.description}</p>
-          </div>
-
+      ) : (
+        <div className="my-10 p-4  md:flex md:justify-center md:space-x-8">
           <div className="flex justify-center">
-            <div className="border flex rounded-lg">
-              {addtoCartNumber <= 0 ? (
-                <MinusIcon className="w-[40px] h-[40px] p-2 bg-slate-200" />
-              ) : (
-                <MinusIcon
-                  onClick={() => setaddtoCartNumber(addtoCartNumber - 1)}
-                  className="w-[40px] h-[40px] p-2 bg-slate-200"
-                />
-              )}
+            <Image
+              src={itemInfo?.image || logo}
+              width={663}
+              height={879}
+              alt="product image"
+              className="w-[300px] md:w-[300px]  p-4 border object-contain"
+            />
+          </div>
 
-              <p className=" text-gray-700 w-[200px]  h-[40px] p-2 text-center ">
-                {addtoCartNumber}
-              </p>
+          <div className="mt-4 md:w-1/2 lg:w-1/3 md:mt-0 space-y-5">
+            <div className="space-y-2">
+              <h1 className="  text-2xl text-gray-800">{itemInfo?.title}</h1>
+              <span className="w-[30px] block  h-[1.5px] bg-gray-700"></span>
+            </div>
 
-              {addtoCartNumber >= 10 ? (
-                <PlusIcon className="w-[40px] h-[40px] p-2 bg-slate-200" />
+            <div className="flex">
+              {rating &&
+                new Array(rating)
+                  .fill(0)
+                  .map((_, index) => (
+                    <StarIcon className=" text-zingyellow" key={index} />
+                  ))}
+              {Number.isInteger(itemInfo?.rating.rate) ? (
+                <></>
               ) : (
-                <PlusIcon
-                  onClick={() => setaddtoCartNumber(addtoCartNumber + 1)}
-                  className="w-[40px] h-[40px] p-2 bg-slate-200"
-                />
+                <>
+                  {" "}
+                  <StarHalfIcon className=" text-zingyellow" />{" "}
+                </>
               )}
             </div>
-          </div>
 
-          <div>
-            {
-              itemInfo &&   <button onClick={() => dispatch(additemtoCart(itemInfo))} className="uppercase  bg-[#2d3a4b] text-sm text-white font-semibold w-full h-10">
-              {" "}
-              add to cart{" "}
-            </button>
-            }
-          
-          </div>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800">
+                ${itemInfo?.price}
+              </h2>
+            </div>
 
-          <div className=" space-y-3">
-            <h2 className="text-lg text-gray-700">
-              Share this item with your Friends
-            </h2>
+            <div className=" flex  justify-between border-y p-3">
+              <div className=" flex items-center space-x-2">
+                <BookmarkIcon className="w-6 text-gray-500" />
+                <p className="text-gray-500 uppercase text-sm">
+                  {itemInfo?.category}
+                </p>
+              </div>
+              <div className=" flex items-center space-x-2">
+                <HandThumbUpIcon className="w-6 text-gray-500" />
+                <p className="text-gray-500 text-sm">
+                  {itemInfo?.rating.count}
+                </p>
+              </div>
+            </div>
 
-            <div className="space-x-2">
-             <FacebookIcon
-                className="text-gray-600"
-                style={{ fontSize: "30px" }}
-              />
-          
-             
-              <TwitterIcon
-                className="text-gray-600"
-                style={{ fontSize: "30px" }}
-              />
-              <InstagramIcon
-                className="text-gray-600"
-                style={{ fontSize: "30px" }}
-              />
+            <div>
+              <p className="text-gray-700">{itemInfo?.description}</p>
+            </div>
+
+            <div>
+              {itemInfo && (
+                <button
+                  onClick={() => dispatch(additemtoCart(itemInfo))}
+                  className="uppercase  bg-[#2d3a4b] text-sm text-white font-semibold w-full h-10"
+                >
+                  {" "}
+                  add to cart{" "}
+                </button>
+              )}
+            </div>
+
+            <div className=" space-y-3">
+              <h2 className="text-lg text-gray-700">
+                Share this item with your Friends
+              </h2>
+
+              <div className="space-x-2">
+                <FacebookIcon
+                  className="text-gray-600"
+                  style={{ fontSize: "30px" }}
+                />
+
+                <TwitterIcon
+                  className="text-gray-600"
+                  style={{ fontSize: "30px" }}
+                />
+                <InstagramIcon
+                  className="text-gray-600"
+                  style={{ fontSize: "30px" }}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <Footer />
     </main>
