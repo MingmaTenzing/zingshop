@@ -30,9 +30,7 @@ function Cart({}: Props) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const stripePromise = loadStripe(
-    "pk_test_51N1gQ2ASPEPBGJmG9FK1qYh81k5hQgOieL6Sq2rtyxPl83f4UJqGnAWp8gVCiJU6FY1bPe6Ie30mjDcmCdHwkjeX00rXWDhqJc"
-  );
+  const stripePromise = loadStripe(process.env.stripe_public_key!);
 
   const createcheckoutSession = async () => {
     console.log("it works");
