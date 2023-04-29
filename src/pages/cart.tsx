@@ -10,7 +10,7 @@ import {
   PlusIcon,
   XCircleIcon,
 } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { data } from "../../data";
@@ -21,42 +21,21 @@ import {
   removeitemfromCart,
 } from "../../slices/cartSlice";
 import Footer from "../../components/Footer";
-import axios from "axios";
+
 import { loadStripe } from "@stripe/stripe-js";
 
 type Props = {};
 function Cart({}: Props) {
   const dispatch = useAppDispatch();
-  const stripePromise = loadStripe("pk_test_51N1gQ2ASPEPBGJmG9FK1qYh81k5hQgOieL6Sq2rtyxPl83f4UJqGnAWp8gVCiJU6FY1bPe6Ie30mjDcmCdHwkjeX00rXWDhqJc");
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-
+  const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY!);
   useEffect(() => {
     let price = 0;
     cartItems.forEach((item) => {
       setTotalPrice((price += item.price * item.cartQuantity));
     });
   }, [cartItems]);
-
-  async function createCheckoutSession() {
-    console.log('it works')
-    const stripe = await stripePromise;
-
-    const checkoutSession = await axios.post("/api/checkout-sessions", {
-      items: cartItems,
-      email: "test@zingshop.com",
-    });
-
-    const result = await stripe?.redirectToCheckout({
-      sessionId: checkoutSession.data.id
-    })
-
-    if (result?.error) {
-      alert(result.error.message);
-    }
-
-    
-  }
 
   return (
     <main>
@@ -210,14 +189,15 @@ function Cart({}: Props) {
               </div>
             </div>
             <div className="flex justify-center mt-4">
-              <button
-                onClick={createCheckoutSession}
-                type="submit"
-                role="link"
-                className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8"
-              >
-                proceed to checkout
-              </button>
+              <form action="/api/checkout_sessions" method="POST">
+                <button
+                  type="submit"
+                  role="link"
+                  className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8"
+                >
+                  proceed to checkout
+                </button>
+              </form>
             </div>
           </div>
         </div>
