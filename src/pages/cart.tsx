@@ -23,13 +23,34 @@ import {
 import Footer from "../../components/Footer";
 
 import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 
 type Props = {};
 function Cart({}: Props) {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY!);
+  const stripePromise = loadStripe(
+    "pk_test_51N1gQ2ASPEPBGJmG9FK1qYh81k5hQgOieL6Sq2rtyxPl83f4UJqGnAWp8gVCiJU6FY1bPe6Ie30mjDcmCdHwkjeX00rXWDhqJc"
+  );
+
+  const createcheckoutSession = async () => {
+    console.log("it works");
+    const stripe = await stripePromise;
+
+    const checkoutSession = await axios.post("/api/create-checkout-session", {
+      items: cartItems,
+    });
+
+    const result = await stripe?.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+
+    if (result?.error) {
+      alert(result?.error.message);
+    }
+  };
+
   useEffect(() => {
     let price = 0;
     cartItems.forEach((item) => {
@@ -189,15 +210,13 @@ function Cart({}: Props) {
               </div>
             </div>
             <div className="flex justify-center mt-4">
-              <form action="/api/checkout_sessions" method="POST">
-                <button
-                  type="submit"
-                  role="link"
-                  className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8"
-                >
-                  proceed to checkout
-                </button>
-              </form>
+              <button
+                onClick={createcheckoutSession}
+                role="link"
+                className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8"
+              >
+                proceed to checkout
+              </button>
             </div>
           </div>
         </div>
