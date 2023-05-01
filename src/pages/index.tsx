@@ -45,7 +45,6 @@ export default function Home() {
     fetchdata();
   }, []);
 
-  console.log(products)
 
 
 

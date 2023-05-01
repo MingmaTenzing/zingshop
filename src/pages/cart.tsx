@@ -33,7 +33,6 @@ function Cart({}: Props) {
   const stripePromise = loadStripe(process.env.stripe_public_key!);
 
   const createcheckoutSession = async () => {
-    console.log("it works");
     const stripe = await stripePromise;
 
     const checkoutSession = await axios.post("/api/create-checkout-session", {
