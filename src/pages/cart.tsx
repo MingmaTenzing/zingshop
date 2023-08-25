@@ -24,6 +24,7 @@ import Footer from "../../components/Footer";
 
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { ScaleLoader } from "react-spinners";
 
 type Props = {};
 function Cart({}: Props) {
@@ -31,20 +32,26 @@ function Cart({}: Props) {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const stripePromise = loadStripe(process.env.stripe_public_key!);
+  const [checkoutLoading, setCheckOutloading] = useState<boolean>(false);
 
   const createcheckoutSession = async () => {
-    const stripe = await stripePromise;
+    if (cartItems.length == 0) {
+      window.alert("Please Add Items to Cart First");
+    } else {
+      setCheckOutloading(true);
+      const stripe = await stripePromise;
 
-    const checkoutSession = await axios.post("/api/create-checkout-session", {
-      items: cartItems,
-    });
+      const checkoutSession = await axios.post("/api/create-checkout-session", {
+        items: cartItems,
+      });
 
-    const result = await stripe?.redirectToCheckout({
-      sessionId: checkoutSession.data.id,
-    });
+      const result = await stripe?.redirectToCheckout({
+        sessionId: checkoutSession.data.id,
+      });
 
-    if (result?.error) {
-      alert(result?.error.message);
+      if (result?.error) {
+        alert(result?.error.message);
+      }
     }
   };
 
@@ -163,13 +170,13 @@ function Cart({}: Props) {
               Discount Code
             </h2>
 
-            <div className=" bg-gray-300  h-[100px] lg:h-[80px] md:w-[300px] lg:w-[400px] flex justify-center items-center p-2 mt-8">
+            <div className=" bg-gray-300  h-[100px] lg:h-[80px]  md:w-[300px] lg:w-[400px] flex justify-center items-center p-2 mt-8">
               <input
-                className="text-sm h-10 p-2 outline-none uppercase lg:w-[250px]"
+                className="text-sm h-10 md:h-14 p-2 outline-none uppercase lg:w-[250px]"
                 type="text"
                 placeholder="Code"
               ></input>
-              <button className="bg-[#2d3a4b] uppercase text-white h-10 p-2 font-semibold text-sm">
+              <button className="bg-[#2d3a4b] uppercase text-white h-10 md:h-14 p-2 font-semibold text-sm">
                 Apply Code
               </button>
             </div>
@@ -207,13 +214,23 @@ function Cart({}: Props) {
               </div>
             </div>
             <div className="flex justify-center mt-4">
-              <button
+              {
+                checkoutLoading? (<button
+                  
+           
+                  className="uppercase bg-[#2d3a4b] text-white w-[254px] p-4 font-semibold px-8"
+                >
+                  <ScaleLoader height={10}  color="#FFFFFF"/>
+                </button>):(<button
                 onClick={createcheckoutSession}
                 role="link"
                 className="uppercase bg-[#2d3a4b] text-white p-4 font-semibold px-8"
               >
                 proceed to checkout
-              </button>
+              </button>)
+              }
+              
+              
             </div>
           </div>
         </div>
